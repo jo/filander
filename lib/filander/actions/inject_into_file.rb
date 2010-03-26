@@ -24,7 +24,9 @@ module Filander
       content = File.read(filename)
       content.gsub!(/#{flag}/, replacement)
 
-      File.open(filename, "w") { |file| file << content }
+      with_report destination, content do
+        File.open(filename, "w") { |file| file << content }
+      end
     end
   end
 end

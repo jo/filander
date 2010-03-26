@@ -36,27 +36,6 @@ describe "Filander" do
       end
     end
 
-    describe "create_directory" do
-      it "should raise if destination_root is nil" do
-        lambda { create_directory 'abc' }.should raise_error
-      end
-
-      describe "with source and destination" do
-        before do
-          setup_roots
-        end
-
-        after do
-          teardown_roots
-        end
-
-        it "should create destination directory" do
-          create_directory('mydir')
-          File.directory?(join_destination('mydir')).should be_true
-        end
-      end
-    end
-
     describe "create_directory_for" do
       it "should raise if destination_root is nil" do
         lambda { create_directory_for 'abc' }.should raise_error

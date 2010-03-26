@@ -9,7 +9,38 @@ require 'filander/actions/template'
 
 module Filander
   class << self
-    attr_accessor :source_root, :destination_root
+    attr_reader :source_root_stack, :destination_root_stack
+    attr_accessor :quiet
+
+    def source_root=(dirname)
+      add_source_root dirname
+    end
+
+    def source_root
+      @source_root_stack ||= []
+      @source_root_stack.last
+    end
+
+    def destination_root=(dirname)
+      add_destination_root dirname
+    end
+
+    def destination_root
+      @destination_root_stack ||= []
+      @destination_root_stack.last
+    end
+
+    private
+
+    def add_source_root(dirname)
+      @source_root_stack ||= []
+      @source_root_stack.push dirname
+    end
+
+    def add_destination_root(dirname)
+      @destination_root_stack ||= []
+      @destination_root_stack.push dirname
+    end
   end
 
   include CopyFile

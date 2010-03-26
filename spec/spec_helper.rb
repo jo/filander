@@ -8,9 +8,14 @@ Spec::Runner.configure do |config|
   
 end
 
+SOURCE_ROOT      = File.expand_path(File.dirname(__FILE__) + '/source')
+DESTINATION_ROOT = File.expand_path(File.dirname(__FILE__) + '/destination')
+
+Filander.quiet = true
+
 def setup_roots
-  Filander.source_root      = File.expand_path(File.dirname(__FILE__) + '/source')
-  Filander.destination_root = File.expand_path(File.dirname(__FILE__) + '/destination')
+  Filander.source_root      = SOURCE_ROOT
+  Filander.destination_root = DESTINATION_ROOT
 end
 
 def teardown_roots

@@ -4,7 +4,12 @@ module Filander
 
     def copy_file(source, destination = source)
       create_directory_for destination
-      FileUtils.cp_r join_source(source), join_destination(destination)
+      filename = join_source(source)
+      content = File.read(filename) rescue nil
+
+      with_report destination, content do
+        FileUtils.cp_r filename, join_destination(destination)
+      end
     end
   end
 end
