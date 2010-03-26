@@ -1,3 +1,4 @@
+require 'fileutils'
 require 'lib/actions/base'
 
 require 'lib/actions/copy_file'
