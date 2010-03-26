@@ -1,12 +1,11 @@
 require 'fileutils'
-require 'lib/actions/base'
-
-require 'lib/actions/copy_file'
-require 'lib/actions/create_file'
-require 'lib/actions/empty_directory'
-require 'lib/actions/inject_into_file'
-require 'lib/actions/inside'
-require 'lib/actions/template'
+require 'filander/actions/base'
+require 'filander/actions/copy_file'
+require 'filander/actions/create_file'
+require 'filander/actions/empty_directory'
+require 'filander/actions/inject_into_file'
+require 'filander/actions/inside'
+require 'filander/actions/template'
 
 module Filander
   class << self

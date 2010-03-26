@@ -10,8 +10,11 @@ begin
     gem.email = "schmidt@netzmerk.com"
     gem.homepage = "http://github.com/jo/filander"
     gem.authors = ["Johannes J. Schmidt"]
+    gem.require_path = "lib"
     gem.add_development_dependency "rspec", ">= 1.2.9"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.files = Dir.glob("lib/**/*")
+    gem.test_files.include 'spec/**/*'
+    gem.has_rdoc = true
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

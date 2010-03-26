@@ -17,13 +17,32 @@ module Filander
     def create_directory(destination = nil)
       dest_dir = join_destination(destination)
 
-      FileUtils.mkdir_p dest_dir unless File.exists?(dest_dir)
+      if File.exists?(dest_dir)
+        report :exist, destination
+      else
+        report :create, destination
+        FileUtils.mkdir_p dest_dir 
+      end
     end
 
     def create_directory_for(destination = nil)
       dest_dir = File.dirname(join_destination(destination))
 
       FileUtils.mkdir_p dest_dir unless File.exists?(dest_dir)
+    end
+
+    def report(verb, name)
+      colour = case verb
+               when :create
+                 :green
+               when :force, :skip
+                 :yellow
+               when :conflict
+                 :red
+               else
+                 :blue
+               end
+      '%s  %s' % [$terminal.color(verb.to_s.rjust(12), :bold, colour), name]
     end
   end
 end
