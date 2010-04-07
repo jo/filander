@@ -11,7 +11,8 @@ end
 SOURCE_ROOT      = File.expand_path(File.dirname(__FILE__) + '/source')
 DESTINATION_ROOT = File.expand_path(File.dirname(__FILE__) + '/destination')
 
-Filander.quiet = true
+Filander.quiet    = true
+Filander.behavior = :force
 
 def setup_roots
   Filander.source_root      = SOURCE_ROOT

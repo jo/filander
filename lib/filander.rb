@@ -1,5 +1,7 @@
 require 'fileutils'
 require 'filander/actions/base'
+require 'filander/actions/cmd'
+require 'filander/actions/copy_directory'
 require 'filander/actions/copy_file'
 require 'filander/actions/create_file'
 require 'filander/actions/empty_directory'
@@ -8,9 +10,30 @@ require 'filander/actions/inside'
 require 'filander/actions/template'
 
 module Filander
+  def self.included(base)
+    base.class_eval do
+      def self.source_root(dirname)
+        Filander.source_root = dirname
+      end
+
+      def self.destination_root(dirname)
+        Filander.destination_root = dirname
+      end
+
+      def self.quiet(value)
+        Filander.quiet = value
+      end
+
+      # can be :pretend, :skip, :force
+      def self.behavior(value)
+        Filander.behavior = value
+      end
+    end
+  end
+
   class << self
     attr_reader :source_root_stack, :destination_root_stack
-    attr_accessor :quiet
+    attr_accessor :quiet, :behavior
 
     def source_root=(dirname)
       add_source_root dirname
@@ -43,6 +66,8 @@ module Filander
     end
   end
 
+  include Cmd
+  include CopyDirectory
   include CopyFile
   include CreateFile
   include EmptyDirectory

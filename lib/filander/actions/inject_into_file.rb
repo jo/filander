@@ -11,9 +11,9 @@ module Filander
         data, config = args.shift, args.shift
       end
 
-      data     = Regexp.escape(data) unless data.is_a?(Regexp)
       position = config[:after] ? :after : :before
       flag     = config[position]
+      flag     = Regexp.escape(flag) unless flag.is_a?(Regexp)
 
       replacement = if position == :after
                       '\0' + data
@@ -21,8 +21,15 @@ module Filander
                       data + '\0'
                     end
 
-      content = File.read(filename)
-      content.gsub!(/#{flag}/, replacement)
+      present = if position == :after
+                  /#{flag}#{Regexp.escape data}/
+                else
+                  /#{Regexp.escape data}#{flag}/
+                end
+
+      content = File.read(filename) if File.file?(filename)
+      content ||= ''
+      content.gsub!(/#{flag}/, replacement) unless content =~ present
 
       with_report destination, content do
         File.open(filename, "w") { |file| file << content }

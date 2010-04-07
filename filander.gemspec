@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Johannes J. Schmidt"]
-  s.date = %q{2010-03-26}
+  s.date = %q{2010-04-07}
   s.description = %q{Helps you dealing with files and directories}
   s.email = %q{schmidt@netzmerk.com}
   s.extra_rdoc_files = [
@@ -19,6 +19,8 @@ Gem::Specification.new do |s|
   s.files = [
     "lib/filander.rb",
      "lib/filander/actions/base.rb",
+     "lib/filander/actions/cmd.rb",
+     "lib/filander/actions/copy_directory.rb",
      "lib/filander/actions/copy_file.rb",
      "lib/filander/actions/create_file.rb",
      "lib/filander/actions/empty_directory.rb",

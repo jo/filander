@@ -5,10 +5,11 @@ module Filander
     def copy_file(source, destination = source)
       create_directory_for destination
       filename = join_source(source)
-      content = File.read(filename) rescue nil
+      raise "Source file `#{filename}' does not exist" unless File.exists?(filename)
 
+      content = File.read(filename) rescue nil
       with_report destination, content do
-        FileUtils.cp_r filename, join_destination(destination)
+        FileUtils.cp filename, join_destination(destination)
       end
     end
   end
