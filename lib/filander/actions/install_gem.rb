@@ -18,7 +18,7 @@ module Filander
           else
             gem name
           end
-        rescue => Gem::LoadError
+        rescue Gem::LoadError
           cmd "gem install #{gem_install_args}"
         end
       end
