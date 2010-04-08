@@ -19,7 +19,7 @@ module Filander
             gem name
           end
         rescue Gem::LoadError
-          cmd "gem install #{gem_install_args}"
+          system "gem install #{gem_install_args}"
         end
       end
     end
