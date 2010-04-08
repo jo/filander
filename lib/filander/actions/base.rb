@@ -77,7 +77,6 @@ module Filander
         name = filename
       end
 
-      # left: cyan
       color = case verb
               when :create
                 :green
@@ -87,6 +86,8 @@ module Filander
                 :red
               when :execute
                 :magenta
+              when :install
+                :cyan
               else
                 :blue
               end

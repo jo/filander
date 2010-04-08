@@ -7,6 +7,7 @@ require 'filander/actions/create_file'
 require 'filander/actions/empty_directory'
 require 'filander/actions/inject_into_file'
 require 'filander/actions/inside'
+require 'filander/actions/install_gem'
 require 'filander/actions/template'
 
 module Filander
@@ -73,5 +74,6 @@ module Filander
   include EmptyDirectory
   include InjectIntoFile
   include Inside
+  include InstallGem
   include Template
 end
