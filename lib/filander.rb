@@ -1,9 +1,11 @@
 require 'fileutils'
 require 'filander/actions/base'
 require 'filander/actions/cmd'
+
 require 'filander/actions/copy_directory'
 require 'filander/actions/copy_file'
 require 'filander/actions/create_file'
+require 'filander/actions/git_clone'
 require 'filander/actions/empty_directory'
 require 'filander/actions/inject_into_file'
 require 'filander/actions/inside'
@@ -68,10 +70,12 @@ module Filander
   end
 
   include Cmd
+
   include CopyDirectory
   include CopyFile
   include CreateFile
   include EmptyDirectory
+  include GitClone
   include InjectIntoFile
   include Inside
   include InstallGem
