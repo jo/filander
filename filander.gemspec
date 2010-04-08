@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{filander}
-  s.version = "0.3.0"
+  s.version = "0.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Johannes J. Schmidt"]
@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
      "lib/filander/actions/copy_file.rb",
      "lib/filander/actions/create_file.rb",
      "lib/filander/actions/empty_directory.rb",
+     "lib/filander/actions/git_clone.rb",
      "lib/filander/actions/inject_into_file.rb",
      "lib/filander/actions/inside.rb",
      "lib/filander/actions/install_gem.rb",
