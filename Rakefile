@@ -6,7 +6,7 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "filander"
     gem.summary = %Q{File manipulation tools}
-    gem.description = %Q{Helps you dealing with files and directories}
+    gem.description = %Q{Helps dealing with files and directories}
     gem.email = "schmidt@netzmerk.com"
     gem.homepage = "http://github.com/jo/filander"
     gem.authors = ["Johannes J. Schmidt"]
