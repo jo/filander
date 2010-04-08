@@ -15,6 +15,7 @@ module Filander
     def create_directory_for(destination = nil)
       dest_dir = File.dirname(join_destination(destination))
 
+      return if Filander.behavior == :pretend
       FileUtils.mkdir_p dest_dir unless File.exists?(dest_dir)
     end
 
@@ -31,7 +32,7 @@ module Filander
           skip = true
         else
           case Filander.behavior
-          when :force
+          when :force, :pretend
             report :force, destination
           when :skip
             report :skip, destination

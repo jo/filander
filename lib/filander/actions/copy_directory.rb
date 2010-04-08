@@ -5,7 +5,7 @@ module Filander
     def copy_directory(source, destination = source)
       create_directory_for destination
       filename = join_source(source)
-      raise "Source file `#{filename}' does not exist" unless File.exists?(filename)
+      raise "Source file `#{filename}' does not exist" if !File.exists?(filename) && Filander.behavior != :pretend
 
       dest = join_destination(destination)
       with_report destination, entries(filename) do
