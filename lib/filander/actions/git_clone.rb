@@ -5,7 +5,7 @@ module Filander
     def git_clone(repository, destination)
       report :cloning, repository
       unless Filander.behavior == :pretend
-        system "git clone #{repository} #{destination}"
+        system "git clone #{repository} #{join_destination(destination)}"
       end
     end
   end
