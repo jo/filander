@@ -10,9 +10,13 @@ module Filander
         gem_install_args = name
         report_name = name
       end
-      report :install, report_name
-      unless Filander.behavior == :pretend
-        system "gem install #{gem_install_args}" unless gem_exists?(name, version)
+      if gem_exists?(name, version)
+        report :installed, report_name
+      else
+        report :install, report_name
+        unless Filander.behavior == :pretend
+          system "gem install #{gem_install_args}"
+        end
       end
     end
 

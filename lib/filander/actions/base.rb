@@ -87,7 +87,7 @@ module Filander
                 :red
               when :execute
                 :magenta
-              when :install
+              when :install, :installed
                 :cyan
               else
                 :blue
