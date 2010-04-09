@@ -12,16 +12,14 @@ module Filander
       end
       report :install, report_name
       unless Filander.behavior == :pretend
-        begin
-          if version
-            gem name, version
-          else
-            gem name
-          end
-        rescue Gem::LoadError
-          system "gem install #{gem_install_args}"
-        end
+        system "gem install #{gem_install_args}" unless gem_exists?(name, version)
       end
+    end
+
+    private
+
+    def gem_exists?(name, version)
+      Gem.path.map { |p| File.join(p, 'gems', "#{name}-#{version || '*'}") }.any? { |p| Dir[p].size > 0 }
     end
   end
 end
