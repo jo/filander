@@ -7,10 +7,10 @@ require 'filander/actions/copy_directory'
 require 'filander/actions/copy_file'
 require 'filander/actions/create_file'
 require 'filander/actions/empty_directory'
+require 'filander/actions/gem_install'
 require 'filander/actions/git_clone'
 require 'filander/actions/inject_into_file'
 require 'filander/actions/inside'
-require 'filander/actions/install_gem'
 require 'filander/actions/template'
 
 module Filander
@@ -77,9 +77,9 @@ module Filander
   include CopyFile
   include CreateFile
   include EmptyDirectory
+  include GemInstall
   include GitClone
   include InjectIntoFile
   include Inside
-  include InstallGem
   include Template
 end
