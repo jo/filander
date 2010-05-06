@@ -28,7 +28,7 @@ module Filander
         Filander.quiet = value
       end
 
-      # can be :pretend, :skip, :force
+      # can be :pretend, :skip or :force
       def self.behavior(value)
         Filander.behavior = value
       end
