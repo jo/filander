@@ -1,8 +1,8 @@
 module Filander
-  module InstallGem
+  module GemInstall
     include Base
 
-    def install_gem(name, version = nil)
+    def gem_install(name, version = nil)
       if version
         gem_install_args = "-v=#{version} #{name}"
         report_name = "#{name} #{version}"
