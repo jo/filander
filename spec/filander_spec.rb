@@ -75,8 +75,8 @@ describe "Filander" do
       Filander.included_modules.should include(Filander::Inside)
     end
 
-    it "should include InstallGem" do
-      Filander.included_modules.should include(Filander::InstallGem)
+    it "should include GemInstall" do
+      Filander.included_modules.should include(Filander::GemInstall)
     end
 
     it "should include Template" do
