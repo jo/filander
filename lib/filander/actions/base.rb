@@ -62,6 +62,7 @@ module Filander
       end
 
       yield unless skip || Filander.behavior == :pretend
+      report nil, content.gsub(/(\n+)/, '\1' + "              ").strip if Filander.verbose
     end
 
     def report(verb, filename)
@@ -79,7 +80,7 @@ module Filander
       end
 
       color = case verb
-              when :create
+              when :create, :clone, :enable
                 :green
               when :force, :skip
                 :yellow

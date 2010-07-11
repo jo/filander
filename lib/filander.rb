@@ -7,8 +7,6 @@ require 'filander/actions/copy_directory'
 require 'filander/actions/copy_file'
 require 'filander/actions/create_file'
 require 'filander/actions/empty_directory'
-require 'filander/actions/gem_install'
-require 'filander/actions/git_clone'
 require 'filander/actions/inject_into_file'
 require 'filander/actions/inside'
 require 'filander/actions/template'
@@ -28,16 +26,26 @@ module Filander
         Filander.quiet = value
       end
 
+      def self.verbose(value)
+        Filander.verbose = value
+      end
+
       # can be :pretend, :skip or :force
       def self.behavior(value)
-        Filander.behavior = value
+        return unless value
+        Filander.behavior = value.to_sym
       end
     end
   end
 
   class << self
-    attr_reader :source_root_stack, :destination_root_stack
-    attr_accessor :quiet, :behavior
+    attr_reader :source_root_stack, :destination_root_stack, :behavior
+    attr_accessor :quiet, :verbose
+
+    def behavior=(value)
+      return unless value
+      @behavior = value.to_sym
+    end
 
     def source_root=(dirname)
       add_source_root dirname
@@ -77,8 +85,6 @@ module Filander
   include CopyFile
   include CreateFile
   include EmptyDirectory
-  include GemInstall
-  include GitClone
   include InjectIntoFile
   include Inside
   include Template
