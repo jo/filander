@@ -1,6 +1,42 @@
 = filander
 
-Description goes here.
+Helps dealing with files and directories.
+
+Inspired by Thor (http://github.com/wycats/thor), but without the command mapping.
+This gem was created to work best in combination with commander (http://github.com/visionmedia/commander).
+
+
+== Usage
+
+  require 'filander'
+
+  include Filander
+
+  inject_into_file '~/.vimrc', :after => /syntax on.*\n/ do
+    <<-STR
+  filetype on         " Enable filetype detection
+  filetype indent on  " Enable filetype-specific indenting
+  filetype plugin on  " Enable filetype-specific plugins
+    STR
+  end
+
+
+== Extending Filander
+
+To extend the core Filander actions, simply open a module and include Filander::Base to get the basic methods like eg. report:
+
+  
+  module GitClone
+    include Filander::Base
+      
+    def git_clone(repository, destination)
+      report :clone, repository
+      unless Filander.behavior == :pretend
+        system "git clone #{repository} #{join_destination(destination)}"
+      end
+    end 
+  end
+
 
 == Note on Patches/Pull Requests
  
