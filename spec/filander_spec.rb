@@ -63,20 +63,12 @@ describe "Filander" do
       Filander.included_modules.should include(Filander::EmptyDirectory)
     end
 
-    it "should include GitClone" do
-      Filander.included_modules.should include(Filander::GitClone)
-    end
-
     it "should include InjectIntoFile" do
       Filander.included_modules.should include(Filander::InjectIntoFile)
     end
 
     it "should include Inside" do
       Filander.included_modules.should include(Filander::Inside)
-    end
-
-    it "should include GemInstall" do
-      Filander.included_modules.should include(Filander::GemInstall)
     end
 
     it "should include Template" do
