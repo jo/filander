@@ -65,6 +65,12 @@ module Filander
       @destination_root_stack.last
     end
 
+    def once(type, name)
+      return if remembered?(type, name)
+      yield
+      remember(type, name)
+    end
+
     private
 
     def add_source_root(dirname)
@@ -75,6 +81,18 @@ module Filander
     def add_destination_root(dirname)
       @destination_root_stack ||= []
       @destination_root_stack.push dirname
+    end
+
+    def remember(type, name)
+      @memories ||= {}
+      @memories[type] ||= []
+      @memories[type] << name
+    end
+
+    def remembered?(type, name)
+      return unless @memories
+      return unless @memories[type]
+      @memories[type].include?(name)
     end
   end
 

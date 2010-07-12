@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{filander}
-  s.version = "0.6.1"
+  s.version = "0.6.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Johannes J. Schmidt"]
-  s.date = %q{2010-07-11}
+  s.date = %q{2010-07-12}
   s.description = %q{Helps dealing with files and directories}
   s.email = %q{schmidt@netzmerk.com}
   s.extra_rdoc_files = [
@@ -45,10 +45,8 @@ Gem::Specification.new do |s|
      "spec/filander/actions/template_spec.rb",
      "spec/filander/actions/empty_directory_spec.rb",
      "spec/filander/actions/create_file_spec.rb",
-     "spec/filander/actions/gem_install_spec.rb",
      "spec/filander/actions/base_spec.rb",
      "spec/filander/actions/cmd_spec.rb",
-     "spec/filander/actions/git_clone_spec.rb",
      "spec/source",
      "spec/source/myfile",
      "spec/source/mydir",

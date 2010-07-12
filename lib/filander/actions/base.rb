@@ -62,7 +62,12 @@ module Filander
       end
 
       yield unless skip || Filander.behavior == :pretend
-      report nil, content.gsub(/(\n+)/, '\1' + "              ").strip if Filander.verbose
+
+      if Filander.verbose
+        say '~'*70
+        say content
+        say '~'*70
+      end
     end
 
     def report(verb, filename)
@@ -88,7 +93,7 @@ module Filander
                 :red
               when :execute
                 :magenta
-              when :install, :installed
+              when :install
                 :cyan
               else
                 :blue
