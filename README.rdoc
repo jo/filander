@@ -21,6 +21,15 @@ This gem was created to work best in combination with commander (http://github.c
   end
 
 
+== Goodies
+
+You can ask Filander to only do an action once per session:
+
+  Filander.once "scope", "action" do
+    # do some stuff
+  end
+
+
 == Extending Filander
 
 To extend the core Filander actions, simply open a module and include Filander::Base to get the basic methods like eg. report:
